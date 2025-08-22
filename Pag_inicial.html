@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOBAL PROJECT IMPROVEMENT SAS | Ingeniería y Analytica Industrial</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Chart.js for animated charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #004146; /* Verde oscuro */
+            --secondary-color: #03BFB5; /* Turquesa */
+            --accent-color: #949398; /* Gris */
+            --light-bg: #F0F0F0;
+            --white: #ffffff;
+            --text-color: #333333;
+            --light-text: #FAFAFA;
+            --whatsapp-green: #25D366;
+            --linkedin-blue: #0A66C2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            color: #616161;
+        }
+
+        /* --- Menú de Navegación --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .navbar .logo {
+            font-size: 2rem; 
+            font-weight: 900; 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .navbar .logo .brand-name {
+            color: var(--primary-color); 
+        }
+        
+        .navbar .logo .brand-name span {
+            color: var(--secondary-color);
+        }
+
+        .navbar .logo .tagline {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-left: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .navbar .nav-links {
+            list-style: none; 
+            display: flex; 
+        }
+        
+        .navbar .nav-links li {
+            margin-left: 2.5rem; 
+        }
+        
+        .navbar .nav-links a {
+            text-decoration: none; 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            position: relative; 
+            padding-bottom: 5px; 
+            font-size: 1rem; 
+        }
+        
+        .navbar .nav-links a::after {
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 0; 
+            height: 3px; 
+            background: var(--secondary-color); 
+            transition: width 0.3s ease; 
+        }
+
+        .navbar .nav-links a:hover::after {
+            width: 100%; 
+        }
+
+        /* --- Sección Hero Creativa --- */
+        #hero {
+            color: var(--light-text); 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 60px 20px;
+            background: linear-gradient(-45deg, #004146, #005F66, #03BFB5, #004146);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        #hero .hero-content {
+            max-width: 850px; 
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem; 
+            color: var(--white); 
+            line-height: 1.2; 
+        }
+
+        #hero h1 .line {
+            display: block;
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+        }
+        #hero h1 .line-1 { animation-delay: 0.5s; }
+        #hero h1 .line-2 { animation-delay: 1.5s; }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #hero h1 span {
+            color: var(--secondary-color); 
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            font-weight: 400; 
+            margin-bottom: 1.5rem; 
+            color: var(--light-bg); 
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+            animation-delay: 2.5s;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #hero .free-consult-slogan {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 1rem;
+            border: 1px solid var(--secondary-color);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+            animation-delay: 3s;
+        }
+        
+        .btn {
+            display: inline-block; 
+            padding: 1rem 3rem; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            border: 2px solid transparent; 
+            font-family: 'Roboto', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+            animation-delay: 3.5s;
+        }
+        
+        .btn-primary {
+            background: var(--secondary-color); 
+            color: var(--white); 
+            border-color: var(--secondary-color); 
+        }
+        
+        .btn-primary:hover {
+            background: var(--white); 
+            color: var(--secondary-color); 
+            transform: scale(1.05); 
+        }
+
+        /* --- Estilos para Animaciones de Scroll --- */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animated-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animated-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .is-visible .animated-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+        .is-visible .animated-item:nth-child(1) { transition-delay: 0.1s; }
+        .is-visible .animated-item:nth-child(2) { transition-delay: 0.2s; }
+        .is-visible .animated-item:nth-child(3) { transition-delay: 0.3s; }
+        .is-visible .animated-item:nth-child(4) { transition-delay: 0.4s; }
+        .is-visible .animated-item:nth-child(5) { transition-delay: 0.5s; }
+        .is-visible .animated-item:nth-child(6) { transition-delay: 0.6s; }
+        .is-visible .animated-item:nth-child(7) { transition-delay: 0.7s; }
+        .is-visible .animated-item:nth-child(8) { transition-delay: 0.8s; }
+
+
+        /* --- Secciones --- */
+        section {
+            padding: 6rem 0;
+        }
+
+        #about {
+            background: var(--light-bg); 
+        }
+        
+        #about .about-content {
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        #about h3 {
+            font-size: 2.2rem; 
+            margin-bottom: 1.5rem; 
+            text-align: center; 
+        }
+        
+        #about p {
+            margin-bottom: 1rem; 
+        }
+
+        #services {
+            background: var(--white); 
+        }
+
+        .services-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; 
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid #ddd;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border-color: var(--secondary-color); 
+        }
+
+        .service-card .icon {
+            font-size: 3rem; 
+            color: var(--secondary-color); 
+            margin-bottom: 1.5rem; 
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem; 
+            margin-bottom: 1rem;
+        }
+        
+        #value-prop {
+            background: var(--light-bg);
+        }
+
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        .value-prop-item {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .value-prop-item h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .value-prop-item p {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 280px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* --- NUEVA SECCIÓN: Nuestro Proceso --- */
+        #process {
+            background: var(--white);
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .process-step {
+            padding: 2rem;
+        }
+        .process-step .icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .process-step:hover .icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        #cta {
+            background: var(--secondary-color);
+            color: var(--light-text); 
+            text-align: center; 
+        }
+
+        #cta h2 {
+            color: var(--white); 
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--white); 
+            max-width: 700px;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        
+        #cta .btn-primary {
+            background: var(--white); 
+            color: var(--secondary-color); 
+            border-color: var(--white); 
+        }
+        
+        #cta .btn-primary:hover {
+            background: transparent; 
+            color: var(--white); 
+        }
+        
+        #contact {
+            background: var(--light-bg); 
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-item .icon {
+            font-size: 3rem; 
+            color: var(--secondary-color); 
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease; 
+        }
+        
+        .contact-item:hover .icon {
+            transform: scale(1.2); 
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: color 0.3s ease; 
+            word-break: break-all; 
+            display: block; 
+            margin-top: 0.5rem;
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary-color); 
+        }
+
+        /* --- FORMULARIO DE CONTACTO --- */
+        .contact-form-container {
+            max-width: 700px;
+            margin: 2rem auto 0 auto;
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .contact-form-container h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(3, 191, 181, 0.2);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--secondary-color);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .form-submit-btn:hover {
+            background: transparent;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: var(--primary-color); 
+            color: var(--light-bg); 
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+        
+        footer p {
+            font-size: 0.9rem; 
+        }
+        
+        .floating-action-buttons {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .fab-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: #FFF;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fab-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .fab-whatsapp { background-color: var(--whatsapp-green); }
+        .fab-linkedin { background-color: var(--linkedin-blue); }
+        .fab-email { background-color: var(--secondary-color); }
+
+        /* --- Media Queries para Responsividad --- */
+        @media (max-width: 992px) {
+            .value-prop-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 2.2rem; } 
+            #hero h1 { font-size: 2.8rem; } 
+            #hero p { font-size: 1.2rem; }
+            .navbar .nav-links { display: none; } 
+            .navbar .logo .tagline { display: none; }
+            #about .about-content { text-align: left; }
+            #about h3 { text-align: center; }
+            .contact-grid, .testimonials-grid, .services-grid, .process-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <span class="brand-name">GLOBAL PROJECT IMPROVEMENT<span style="font-size:1.5rem; font-weight: 400; padding-left: 0.5rem;">SAS.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#services">Soluciones</a></li>
+                <li><a href="#value-prop">Propuesta de Valor</a></li>
+                <li><a href="#process">Nuestro Proceso</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content container">
+            <h1>
+                <span class="line line-1">Ingeniería e Integridad de Activos<span>.</span></span>
+                <span class="line line-2">Servicios de Analítica de Datos para la Industria<span>.</span></span>
+            </h1>
+            <p>
+                Somos un equipo multidisciplinario enfocado en impulsar la excelencia operativa. Fusionamos el rigor de la ingeniería industrial con la innovación de la analítica de datos, la automatización y la inteligencia artificial para resolver los desafíos más complejos de su negocio.
+            </p>
+            <p class="free-consult-slogan">Tu primera consulta de diagnóstico es <strong>GRATIS</strong></p>
+            <a href="#contact" class="btn btn-primary">Agendar Consulta Gratuita</a>
+        </div>
+    </section>
+
+    <section id="about" class="animated-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Sobre Nosotros</h3>
+                    <p>
+                        En <strong>GLOBAL PROJECT IMPROVEMENT SAS</strong>, somos un equipo de ingenieros y científicos de datos con una profunda pasión por la excelencia operativa. Nuestra misión es ser su socio estratégico, ofreciendo soluciones a la medida que no solo resuelven problemas, sino que crean valor a largo plazo.
+                    </p>
+                    <p>
+                        Nuestra vasta experiencia en el <strong>campo industrial</strong> nos permite entender los desafíos únicos de las operaciones. Combinamos el rigor de la ingeniería con la agilidad de la ciencia de datos para optimizar procesos, garantizar la integridad de activos, mejorar la calidad y descubrir nuevas oportunidades de crecimiento.
+                    </p>
+                    <p>
+                        Estamos comprometidos con la mejora continua y la más alta calidad, lo que nos permite asegurar la entrega de proyectos con resultados medibles y sostenibles para su organización.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="animated-section">
+        <div class="container">
+            <h2>Nuestras Soluciones</h2>
+            <p class="section-subtitle">Un portafolio de servicios diseñados para generar un impacto medible y sostenible en tu negocio.</p>
+            
+            <div class="services-grid">
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Inteligencia de Negocios (BI)</h3>
+                    <p>Transformamos datos crudos en dashboards dinámicos (Power BI, Tableau) para que monitorees tus KPIs en tiempo real y tomes decisiones basadas en evidencia.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-robot"></i></div>
+                    <h3>Automatización Inteligente (RPA)</h3>
+                    <p>Liberamos a tu equipo de tareas repetitivas mediante la Automatización Robótica de Procesos, aumentando la productividad y reduciendo errores.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <h3>Big Data y Arquitectura</h3>
+                    <p>Diseñamos la infraestructura de datos (SQL, PostgreSQL, Cloud) que tu empresa necesita para manejar grandes volúmenes de información de forma segura y escalable.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Análisis Predictivo con IA</h3>
+                    <p>Usamos machine learning y Python para anticipar tendencias, predecir comportamientos y descubrir oportunidades que otros no ven. Adelántate al futuro.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-hammer"></i></div>
+                    <h3>Inspección y Gestión de Activos (API, RBI)</h3>
+                    <p>Ofrecemos servicios de inspección de tanques y activos industriales bajo normas como API 653, API 510, y API 570, con soporte en Análisis de Riesgo (RBI).</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-search-plus"></i></div>
+                    <h3>Ensayos No Destructivos (END)</h3>
+                    <p>Realizamos inspecciones de activos mediante técnicas de Ensayos No Destructivos, como ultrasonido y líquidos penetrantes, para evaluar su condición sin dañarlos.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-building-circle-check"></i></div>
+                    <h3>Evaluación de Integridad de Activos</h3>
+                    <p>Analizamos el estado de sus activos para identificar riesgos, optimizar la vida útil, y asegurar el cumplimiento de las normativas de seguridad y calidad.</p>
+                </div>
+                <div class="service-card animated-item">
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Desarrollo a Medida</h3>
+                    <p>Creamos las herramientas y aplicaciones que tu negocio realmente necesita, con un enfoque en resolver tus desafíos únicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="value-prop" class="animated-section">
+        <div class="container">
+            <h2>Nuestra Propuesta de Valor</h2>
+            <p class="section-subtitle">Transformamos los datos de su proceso en información para la toma de decisiones.</p>
+            
+            <div class="value-prop-grid">
+                <div class="value-prop-item animated-item">
+                    <h3><i class="fas fa-rocket"></i> Impulso a la Productividad</h3>
+                    <p>Mediante herramientas estadísticas y automatización, eliminamos cuellos de botella y optimizamos flujos de trabajo. El resultado es un equipo más ágil y enfocado en lo que realmente importa.</p>
+                    <div class="chart-container">
+                        <canvas id="productivityChart"></canvas>
+                    </div>
+                </div>
+                <div class="value-prop-item animated-item">
+                    <h3><i class="fas fa-brain"></i> Inteligencia Artificial Aplicada</h3>
+                    <p>Utilizamos modelos de IA y Machine Learning para predecir tendencias y descubrir insights ocultos en sus datos, dándole una ventaja competitiva decisiva para anticiparse al mercado.</p>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="value-prop-item animated-item">
+                    <h3><i class="fas fa-piggy-bank"></i> Optimización de Recursos</h3>
+                    <p>Analizamos sus operaciones para identificar fugas de capital y áreas de mejora, traduciendo los datos en estrategias directas para la reducción de costos y la mitigación de riesgos financieros.</p>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+                <div class="value-prop-item animated-item">
+                    <h3><i class="fas fa-compass"></i> Visión Estratégica 360°</h3>
+                    <p>Convertimos datos complejos en un mapa claro de su negocio y sus clientes, permitiendo tomar decisiones informadas que impulsan la innovación, la retención y la satisfacción del cliente.</p>
+                    <div class="chart-container">
+                        <canvas id="strategyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= NUEVA SECCIÓN: NUESTRO PROCESO ========= -->
+    <section id="process" class="animated-section">
+        <div class="container">
+            <h2>Nuestro Proceso</h2>
+            <p class="section-subtitle">Un enfoque estructurado y transparente para garantizar resultados excepcionales en cada proyecto.</p>
+            <div class="process-grid">
+                <div class="process-step animated-item">
+                    <div class="icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                    <h3>1. Diagnóstico y Análisis</h3>
+                    <p>Nos sumergimos en su negocio para entender sus desafíos, objetivos y el estado actual de sus datos.</p>
+                </div>
+                <div class="process-step animated-item">
+                    <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h3>2. Diseño de la Solución</h3>
+                    <p>Elaboramos un plan estratégico y una arquitectura de solución a la medida de sus necesidades específicas.</p>
+                </div>
+                <div class="process-step animated-item">
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                    <h3>3. Implementación</h3>
+                    <p>Nuestro equipo desarrolla e integra la solución, asegurando una transición fluida y una mínima interrupción.</p>
+                </div>
+                <div class="process-step animated-item">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <h3>4. Soporte y Evolución</h3>
+                    <p>Ofrecemos capacitación y soporte continuo para maximizar la adopción y el valor de la nueva herramienta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========= FIN DE LA NUEVA SECCIÓN ========= -->
+
+    <section id="cta" class="animated-section">
+        <div class="container">
+            <h2>¿Listos para dar el primer paso?</h2>
+            <p>El camino hacia la optimización comienza con una conversación. Agenden su consulta de diagnóstico gratuita y descubramos juntos el potencial oculto en sus datos.</p>
+            <a href="#contact" class="btn btn-primary">Agendar Consulta GRATIS</a>
+        </div>
+    </section>
+
+    <section id="contact" class="animated-section">
+        <div class="container">
+            <h2>Iniciemos la Conversación</h2>
+            <p class="section-subtitle">Estamos disponibles a través de estos canales para discutir su próximo proyecto.</p>
+
+            <div class="contact-grid">
+                <div class="contact-item animated-item">
+                    <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/573216291861" target="_blank">+57 321 629 1861</a>
+                </div>
+                <div class="contact-item animated-item">
+                    <div class="icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <h3>Correo Electrónico</h3>
+                    <a href="mailto:dialhebl.dh@gmail.com">dialhebl.dh@gmail.com</a>
+                    <a href="mailto:diealeherbla.dh@gmail.com">diealeherbla.dh@gmail.com</a>
+                </div>
+                <div class="contact-item animated-item">
+                    <div class="icon"><i class="fab fa-linkedin"></i></div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/diego-alejandro-hernandez-blanco-08b64120b" target="_blank">Diego A. Hernández Blanco</a>
+                </div>
+            </div>
+
+            <!-- ========= FORMULARIO DE CONTACTO ========= -->
+            <div class="contact-form-container animated-item">
+                <h3>O déjenos un mensaje directo</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="challenge">¿Cuál es su mayor desafío actual con los datos?</label>
+                        <textarea id="challenge" name="challenge" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+            <!-- ========= FIN DEL FORMULARIO ========= -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GLOBAL PROJECT IMPROVEMENT SAS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <div class="floating-action-buttons">
+        <a href="mailto:dialhebl.dh@gmail.com" class="fab-icon fab-email" target="_blank" aria-label="Contactar por Correo">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/diego-alejandro-hernandez-blanco-08b64120b" class="fab-icon fab-linkedin" target="_blank" aria-label="Contactar por LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://wa.me/573216291861" class="fab-icon fab-whatsapp" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Observer para animaciones de scroll ---
+        const animatedElements = document.querySelectorAll('.animated-section, .animated-item, .process-step');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        animatedElements.forEach(el => observer.observe(el));
+
+        // --- Configuración de Gráficos ---
+        let productivityChart, revenueChart, costChart, strategyChart;
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    boxPadding: 4,
+                }
+            },
+            animation: {
+                duration: 1500,
+                easing: 'easeInOutQuart'
+            }
+        };
+
+        // --- Observer para animar gráficos al ser visibles ---
+        const chartObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Gráfico de Productividad (Barras)
+                    if (entry.target.id === 'productivityChart' && !productivityChart) {
+                        productivityChart = new Chart(document.getElementById('productivityChart'), {
+                            type: 'bar',
+                            data: {
+                                labels: ['Antes', 'Después'],
+                                datasets: [{
+                                    label: 'Eficiencia Operativa (%)',
+                                    data: [55, 90],
+                                    backgroundColor: ['rgba(148, 147, 152, 0.6)', 'rgba(3, 191, 181, 0.7)'],
+                                    borderColor: ['rgb(148, 147, 152)', 'rgb(3, 191, 181)'],
+                                    borderWidth: 2
+                                }]
+                            },
+                            options: {...chartOptions, scales: { y: { beginAtZero: true, max: 100 } } }
+                        });
+                    }
+                    // Gráfico de Ingresos (Línea)
+                    if (entry.target.id === 'revenueChart' && !revenueChart) {
+                        revenueChart = new Chart(document.getElementById('revenueChart'), {
+                            type: 'line',
+                            data: {
+                                labels: ['T1', 'T2', 'T3', 'T4'],
+                                datasets: [{
+                                    label: 'Nuevas Oportunidades',
+                                    data: [20, 45, 60, 95],
+                                    fill: true,
+                                    borderColor: 'rgb(3, 191, 181)',
+                                    backgroundColor: 'rgba(3, 191, 181, 0.1)',
+                                    tension: 0.4
+                                }]
+                            },
+                            options: {...chartOptions, scales: { y: { beginAtZero: true } } }
+                        });
+                    }
+                    // Gráfico de Costos (Dona)
+                    if (entry.target.id === 'costChart' && !costChart) {
+                        costChart = new Chart(document.getElementById('costChart'), {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Mantenimiento Predictivo', 'Optimización de Procesos', 'Reducción de Desperdicio'],
+                                datasets: [{
+                                    label: 'Áreas de Ahorro (%)',
+                                    data: [40, 35, 25],
+                                    backgroundColor: ['rgba(3, 191, 181, 0.8)', 'rgba(148, 147, 152, 0.8)', 'rgba(239, 245, 249, 0.8)'],
+                                    borderColor: ['#FFFFFF'],
+                                    borderWidth: 3,
+                                    hoverOffset: 4
+                                }]
+                            },
+                            options: {...chartOptions, plugins: {...chartOptions.plugins, legend: {display: true, position: 'bottom', labels: {boxWidth: 15, padding: 15}}}}
+                        });
+                    }
+                    // Gráfico de Estrategia (Radar)
+                    if (entry.target.id === 'strategyChart' && !strategyChart) {
+                        strategyChart = new Chart(document.getElementById('strategyChart'), {
+                            type: 'radar',
+                            data: {
+                                labels: ['Eficiencia', 'Conocimiento del Cliente', 'Innovación', 'Retención', 'Decisión Estratégica'],
+                                datasets: [{
+                                    label: 'Antes',
+                                    data: [30, 40, 25, 35, 45],
+                                    fill: true,
+                                    backgroundColor: 'rgba(148, 147, 152, 0.2)',
+                                    borderColor: 'rgb(148, 147, 152)',
+                                    pointBackgroundColor: 'rgb(148, 147, 152)',
+                                    pointBorderColor: '#fff',
+                                    pointHoverBackgroundColor: '#fff',
+                                    pointHoverBorderColor: 'rgb(148, 147, 152)'
+                                }, {
+                                    label: 'Después',
+                                    data: [85, 90, 75, 80, 95],
+                                    fill: true,
+                                    backgroundColor: 'rgba(3, 191, 181, 0.2)',
+                                    borderColor: 'rgb(3, 191, 181)',
+                                    pointBackgroundColor: 'rgb(3, 191, 181)',
+                                    pointBorderColor: '#fff',
+                                    pointHoverBackgroundColor: '#fff',
+                                    pointHoverBorderColor: 'rgb(3, 191, 181)'
+                                }]
+                            },
+                            options: {...chartOptions, plugins: {...chartOptions.plugins, legend: {display: true}}, scales: {r: {min: 0, max: 100, ticks: {stepSize: 20}}}}
+                        });
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const chartCanvases = document.querySelectorAll('canvas');
+        chartCanvases.forEach(canvas => chartObserver.observe(canvas));
+    });
+    </script>
+
+</body>
+</html>
